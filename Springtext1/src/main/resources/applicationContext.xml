@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:component-scan base-package="com.zut.zyg"></context:component-scan>
+    <bean id="userDao" class="com.zut.zyg.DaoImpl.UserDaoImpl"></bean>
+    <bean id="car1" class="com.zut.zyg.pojo.Car">
+        <property name="band" value="BMW"></property>
+        <property name="color" value="white"></property>
+        <property name="outputVolume" value="10.2"></property>
+    </bean>
+    <bean id="user1" class="com.zut.zyg.pojo.User">
+        <property name="name" value="user1" ></property>
+        <property name="compony" value="Alibaba"></property>
+        <property name="car" ref="car1"></property>
+        <property name="habit" value="compute"></property>
+    </bean>
+    <bean id="user2" class="com.zut.zyg.pojo.User">
+        <property name="name" value="user2" ></property>
+        <property name="compony" value="Baidu"></property>
+        <property name="car" ref="car1"></property>
+        <property name="habit" value="baseketBall"></property>
+    </bean>
+    <bean id="user3" class="com.zut.zyg.pojo.User">
+        <property name="name" value="user3" ></property>
+        <property name="compony" value="TX  "></property>
+        <property name="car" ref="car1"></property>
+        <property name="habit" value="hiphop"></property>
+    </bean>
+    <bean id="conference1" class="com.zut.zyg.pojo.Conference">
+        <property name="theme" value="hiphop"></property>
+        <property name="users">
+            <list>
+                <ref bean="user1"></ref>
+                <ref bean="user3"></ref>
+                <ref bean="user2"></ref>
+            </list>
+        </property>
+    </bean>
+</beans>
+
+
+    <context:component-scan base-package="com.lyd"></context:component-scan>
+    <bean id="userDao" class="com.lyd.DaoImpl.UserDaooImpl"></bean>
+    <bean id="car1" class="com.lyd.pojo.Car">
+        <property name="band" value="acar"></property>
+        <property name="color" value="white"></property>
+        <property name="outputVolume" value="111"></property>
+    </bean>
+    <bean id="user1" class="com.lyd.pojo.User">
+        <property name="name" value="user1" ></property>
+        <property name="compony" value="aaaa"></property>
+        <property name="car" ref="car1"></property>
+        <property name="habit" value="compute"></property>
+    </bean>
+    <bean id="user2" class="com.lyd.pojo.User">
+        <property name="name" value="user2" ></property>
+        <property name="compony" value="Baidu"></property>
+        <property name="car" ref="car1"></property>
+        <property name="habit" value="baseketBall"></property>
+    </bean>
+    <bean id="user3" class="com.lyd.pojo.User">
+        <property name="name" value="user3" ></property>
+        <property name="compony" value="TX  "></property>
+        <property name="car" ref="car1"></property>
+        <property name="habit" value="hiphop"></property>
+    </bean>
+    <bean id="conference1" class="com.lyd.pojo.Conference">
+        <property name="theme" value="dance"></property>
+        <property name="users">
+            <list>
+                <ref bean="user1"></ref>
+                <ref bean="user3"></ref>
+                <ref bean="user2"></ref>
+            </list>
+        </property>
+    </bean>
+</beans>
