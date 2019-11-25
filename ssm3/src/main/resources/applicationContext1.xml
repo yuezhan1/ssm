@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+<bean id="userDao" class="dao.UserDaoImpl"/>
+    <bean id="myAspect1" class="factorybean.MyAspect1"/>
+    <aop:config>
+        <!--配置切面-->
+        <aop:aspect ref="myAspect1">
+            <aop:pointcut id="myPoinCut" expression="execution(* dao.*.*(..))"/>
+            <aop:before method="myBefore" pointcut-ref="myPoinCut"/>
+            <aop:after-returning method="myAfterReturning" pointcut-ref="myPoinCut"
+            returning="joinPoint"/>
+            <aop:around method="myAround" pointcut-ref="myPoinCut"/>
+            <aop:after-throwing method="myAfterThrowing" pointcut-ref="myPoinCut" throwing="throwable"/>
+            <aop:after method="myAfter" pointcut-ref="myPoinCut"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
