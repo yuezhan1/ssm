@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.AccountMapper">
+  <resultMap id="BaseResultMap" type="pojo.Account">
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="account" jdbcType="FLOAT" property="account"/>
+    <result column="balance" jdbcType="FLOAT" property="balance"/>
+  </resultMap>
+  <delete id="delete">
+    delete
+    from bank
+    where account = #{account}
+  </delete>
+
+  <insert id="insert">
+    insert into bank(account, balance)
+    values (#{account}, #{balance})
+  </insert>
+
+  <update id="update">
+    update bank
+    set balance= #{balance}
+    where account = #{account}
+  </update>
+  <select id="select" resultMap="BaseResultMap">
+    select *
+    from bank
+    where account = #{account}
+  </select>
+</mapper>
